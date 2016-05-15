@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!--添加账户的标题栏-->
@@ -30,7 +35,6 @@
             android:gravity="center"
             android:layout_marginLeft="15dp"/>
 
-
     </LinearLayout>
 
 
@@ -39,8 +43,45 @@
         android:layout_height="wrap_content"
         android:text="@string/addNewBill"/>
 
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="类型(4个字符,例如:吃,喝,玩,乐)"/>
+    <!--类型,限制在4个字符-->
+    <EditText
+        android:id="@+id/add_bill_type_et"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:maxLength="4"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="多少钱?"/>
+    <!--数值-->
+    <EditText
+        android:id="@+id/add_bill_money_et"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+
+    <!--时间,先使用系统时间-->
+    <DatePicker android:id="@+id/add_bill_date"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:startYear="2010"
+        android:endYear="2050"
+        android:calendarViewShown="true"
+        android:spinnersShown="true"
+        />
+
     <RadioGroup
-        android:id="@+id/add_bill_type_rg"
+        android:id="@+id/add_bill_inout_rg"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:orientation="horizontal">
@@ -50,7 +91,8 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:text="收入"
-            android:background="@color/red"/>
+            android:background="@color/red"
+            android:checked="true"/>
         <RadioButton
             android:id="@+id/add_bill_rb_out"
             android:layout_width="0dp"
@@ -59,4 +101,14 @@
             android:text="支出"
             android:layout_weight="1"/>
     </RadioGroup>
+
+    <Button
+        android:id="@+id/add_bill_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="50px"
+        android:text="添加"/>
+
+
 </LinearLayout>
+
+</ScrollView>
