@@ -44,12 +44,11 @@
     </ListView>
 
     <Button
-        android:id="@+id/add_bill_btn"
+        android:id="@+id/go_add_bill_btn"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="30dp"
         android:text="添加"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_weight="0.5"
         />
 
 </LinearLayout>
