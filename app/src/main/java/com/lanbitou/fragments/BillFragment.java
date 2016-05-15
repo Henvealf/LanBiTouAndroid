@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,15 @@ import com.lanbitou.R;
 import com.lanbitou.activities.AddBillActivity;
 import com.lanbitou.activities.MainActivity;
 import com.lanbitou.adapters.BillListAdapter;
+import com.lanbitou.entities.Bill;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,16 +41,16 @@ import java.util.Objects;
 public class BillFragment extends Fragment{
 
     private Button addBillBtn;
+
     public BillFragment(){
 
     }
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_bill, container,false);
-        addBillBtn = (Button) view.findViewById(R.id.add_bill_btn);
+        addBillBtn = (Button) view.findViewById(R.id.go_add_bill_btn);
 
         addBillBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,10 +60,23 @@ public class BillFragment extends Fragment{
             }
         });
 
-        ListAdapter adapter = new BillListAdapter(this.getActivity());
+        //测试
+        List<Bill> billList = new ArrayList<>();
+        billList.add(new Bill(1,1,"吃",-111,"有个无聊的地方,","日常",new Date()));
+        billList.add(new Bill(1,1,"工资",-111,"一群人到处游啊游,","日常",new Date()));
+        billList.add(new Bill(1,1,"喝",121.2,"醉醺醺的倒了,","日常",new Date()));
+        billList.add(new Bill(1,1,"玩",111.22,"有个无聊的地方,","日常",new Date()));
+        billList.add(new Bill(1,1,"乐",-111,"","日常",new Date()));
+        billList.add(new Bill(1,1,"哈",111,"胡哈哈哈哈","日常",new Date()));
+        billList.add(new Bill(1,1,"很多",-111,"中田也不知所措,","日常",new Date()));
+
+        billList.add(new Bill(1,1,"你猜",111,"天上很多鱼,","日常",new Date()));
+
+        ListAdapter adapter = new BillListAdapter(this.getActivity(),billList);
 
         ListView list = (ListView) view.findViewById(R.id.bill_list);
         list.setAdapter(adapter);
         return view;
     }
+
 }
